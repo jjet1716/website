@@ -9,7 +9,6 @@
 html {
   font-family: "tablet-gothic", sans-serif;
   font-weight: 400;
-  font-style: normal;
   color: white;
   line-height: 1.6;
   /* 1 */
@@ -27,45 +26,6 @@ body {
   margin: 0;
 }
 
-#logo path:nth-child(1) {
-  stroke-dasharray: 700;
-  stroke-dashoffset: 700;
-  -webkit-animation: N_anim 3s ease forwards;
-          animation: N_anim 3s ease forwards;
-}
-
-#logo path:nth-child(2) {
-  fill: #ff4747;
-  fill-opacity: 0;
-  stroke-dasharray: 700;
-  stroke-dashoffset: 700;
-  -webkit-animation: J2_anim 3s ease forwards 1s;
-          animation: J2_anim 3s ease forwards 1s;
-}
-
-@-webkit-keyframes N_anim {
-  to {
-    stroke-dashoffset: 0;
-  }
-}
-
-@keyframes N_anim {
-  to {
-    stroke-dashoffset: 0;
-  }
-}
-@-webkit-keyframes J2_anim {
-  to {
-    stroke-dashoffset: 0;
-    fill-opacity: 1;
-  }
-}
-@keyframes J2_anim {
-  to {
-    stroke-dashoffset: 0;
-    fill-opacity: 1;
-  }
-}
 /**
  * Render the `main` element consistently in IE.
  */
@@ -384,4 +344,49 @@ template {
  */
 [hidden] {
   display: none;
+}
+
+*, *::before, *::after {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+#logo path:nth-child(1) {
+  stroke-dasharray: 700;
+  stroke-dashoffset: 700;
+  -webkit-animation: N_anim 3s ease forwards;
+          animation: N_anim 3s ease forwards;
+}
+
+#logo path:nth-child(2) {
+  fill: #ff4747;
+  fill-opacity: 0;
+  stroke-dasharray: 700;
+  stroke-dashoffset: 700;
+  -webkit-animation: J_anim 3s ease forwards 1s;
+          animation: J_anim 3s ease forwards 1s;
+}
+
+@-webkit-keyframes N_anim {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes N_anim {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+@-webkit-keyframes J_anim {
+  to {
+    stroke-dashoffset: 0;
+    fill-opacity: 1;
+  }
+}
+@keyframes J_anim {
+  to {
+    stroke-dashoffset: 0;
+    fill-opacity: 1;
+  }
 }

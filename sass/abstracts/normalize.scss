@@ -9,9 +9,7 @@
  */
 
  html {
-    font-family: "tablet-gothic", sans-serif;
-    font-weight: 400;
-    font-style: normal;
+    @include font($font-base, $font-regular);
     color: $text-light;
     line-height: 1.6; /* 1 */
     -webkit-text-size-adjust: 100%; /* 2 */
@@ -28,34 +26,6 @@
     background: $primary;
     margin: 0;
   }
-
-  #logo path:nth-child(1) {
-    stroke-dasharray: 700;
-    stroke-dashoffset: 700;
-    animation: N_anim 3s ease forwards;
-  }
-
-  #logo path:nth-child(2) {
-    fill: $accent;
-    fill-opacity: 0;
-    stroke-dasharray: 700;
-    stroke-dashoffset: 700;
-    animation: J2_anim 3s ease forwards 1s;
-  }
-
-  @keyframes N_anim {
-      to {
-          stroke-dashoffset: 0;
-      }
-  }
-
-  @keyframes J2_anim {
-    to {
-        stroke-dashoffset: 0;
-        fill-opacity: 1;
-    }
-  }
-  
   
   /**
    * Render the `main` element consistently in IE.

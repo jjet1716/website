@@ -1,0 +1,21 @@
+#logo path:nth-child(1) 
+    stroke-dasharray: 700
+    stroke-dashoffset: 700
+    animation: N_anim 3s ease forwards
+  
+#logo path:nth-child(2) 
+    fill: $accent
+    fill-opacity: 0
+    stroke-dasharray: 700
+    stroke-dashoffset: 700
+    animation: J_anim 3s ease forwards 1s
+
+@keyframes N_anim 
+    to 
+        stroke-dashoffset: 0
+
+@keyframes J_anim 
+    to 
+        stroke-dashoffset: 0
+        fill-opacity: 1
+    
