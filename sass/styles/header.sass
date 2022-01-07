@@ -1,3 +1,111 @@
+
+/*============== Header Container Styling ================*/     
+.main-header 
+    position: fixed
+    z-index: 10
+    width: 100%
+    height: $header-height
+
+    background: $primary
+    box-shadow: 0 10px 10px -5px rgba(0,0,0,0.3)
+    transition: all 0.25s ease
+
+.main-header.invis
+    transform: translateY(-$header-height)
+    box-shadow: none
+
+.main-header.top
+    box-shadow: none   
+
+.main-header .container
+    max-width: 100%
+    width: 100%
+    padding-top: $header-space-tb
+    padding-bottom: $header-space-tb
+    padding-right: $header-space-lr
+    padding-left: $header-space-lr
+    
+.main-header .container.grid 
+    justify-content: space-between
+    align-items: center
+
+.logo-container 
+    
+    
+/*============== Nav Bar Styling ================*/ 
+.nav-bar
+    display: flex
+    align-items: center
+    justify-content: space-around
+
+
+.nav-list
+    list-style: none
+    margin: 0
+    padding: 0
+
+    display: flex
+    flex-direction: row
+    justify-content: space-between
+
+    a
+        padding: $nav-space-between
+        text-decoration: none
+        color: $text-light
+
+.nav-toggle
+    display: none
+    cursor: pointer
+
+.hamburger, .hamburger::before, .hamburger::after
+    display: block
+    width: 1.75em
+    height: 3px
+    background: white
+
+.hamburger::before
+    content: ""
+    transform: translateY(-7px)
+
+.hamburger::after
+    content: ""
+    transform: translateY(4px)
+
+
+
+@media(max-width: 900px)
+    .nav-toggle
+        display: block
+        //position: absolute
+        //top: 0
+        //right: 0
+
+    .nav-list
+        position: absolute
+        top: 0
+        right: 0
+        left: 100%
+        overflow: hidden
+        display: flex
+        flex-direction: column
+        height: 100vh
+        justify-content: space-around
+        background: $accent
+        font-size: 1.2rem
+        transition: all ease-in-out 0.25s
+
+        li
+            flex: 1 1 auto
+            border-bottom: 1px solid rgba(0,0,0,.30)
+            display: flex
+            align-items: center
+            justify-content: center
+
+        &.open
+            left: 0
+    
+
+/*============== Logo Animation Styling ================*/ 
 #logo path:nth-child(1) 
     stroke-dasharray: 700
     stroke-dashoffset: 700
@@ -18,4 +126,3 @@
     to 
         stroke-dashoffset: 0
         fill-opacity: 1
-    

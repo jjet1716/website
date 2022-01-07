@@ -1,0 +1,64 @@
+
+/*============== Header Container Styling ================*/     
+.main-header 
+    position: fixed
+    width: 100%
+    height: $header-height
+    padding-top: $header-space-top
+
+.main-header .container
+    max-width: 100%
+    width: 100%
+    padding-right: $header-space-lr
+    padding-left: $header-space-lr
+    
+.main-header .container.grid 
+    justify-content: space-between
+    align-items: center
+
+.logo-container 
+    
+    
+/*============== Nav Bar Styling ================*/ 
+.nav-bar
+    display: flex
+    align-items: center
+    justify-content: space-around
+
+
+.nav-list
+    list-style: none
+    margin: 0
+    padding: 0
+
+    display: flex
+    flex-direction: row
+    justify-content: space-between
+
+    a
+        padding: $nav-space-between
+        text-decoration: none
+        color: $text-light
+
+
+/*============== Logo Animation Styling ================*/ 
+#logo path:nth-child(1) 
+    stroke-dasharray: 700
+    stroke-dashoffset: 700
+    animation: N_anim 3s ease forwards
+  
+#logo path:nth-child(2) 
+    fill: $accent
+    fill-opacity: 0
+    stroke-dasharray: 700
+    stroke-dashoffset: 700
+    animation: J_anim 3s ease forwards 1s
+
+@keyframes N_anim 
+    to 
+        stroke-dashoffset: 0
+
+@keyframes J_anim 
+    to 
+        stroke-dashoffset: 0
+        fill-opacity: 1
