@@ -4,7 +4,6 @@
     position: fixed
     z-index: 10
     width: 100%
-    height: $header-height
 
     background: $primary
     box-shadow: 0 10px 10px -5px rgba(0,0,0,0.3)
@@ -20,6 +19,7 @@
 .main-header .container
     max-width: 100%
     width: 100%
+    height: $header-height
     padding-top: $header-space-tb
     padding-bottom: $header-space-tb
     padding-right: $header-space-lr
@@ -29,7 +29,8 @@
     justify-content: space-between
     align-items: center
 
-.logo-container 
+.logo-container svg
+    transform: scale(0.55)
     
     
 /*============== Nav Bar Styling ================*/ 
@@ -38,6 +39,19 @@
     align-items: center
     justify-content: space-around
 
+.line-swoop
+    //position: absolute
+    //top: 0
+    //left: 50%
+    display: inline-block
+    height: 5em
+    width: $line-length + 1em
+    border-left: 4px solid $accent
+    border-bottom: 4px solid $accent
+    border-bottom-left-radius: 20px
+    transform: translate(1.3em, -2.3em)
+    animation: nav_first_line 5s linear forwards 1s
+    display: none
 
 .nav-list
     list-style: none
@@ -48,14 +62,93 @@
     flex-direction: row
     justify-content: space-between
 
-    a
-        padding: $nav-space-between
+    li 
+        position: relative
+        margin: 0 $nav-space-between
+
+    li:nth-of-type(1)::before
+        content: ""
+        position: absolute
+        left: $line-start
+        top: $line-top
+        height: 100%
+        width: $line-length
+        //background: $accent
+
+    li:nth-of-type(2)::before,
+    li:nth-of-type(3)::before,
+    li:nth-of-type(4)::before
+        content: ""
+        width: 0em
+        height: 3px
+        position: absolute
+        left: $line-start
+        top: $line-top
+        background: $accent
+
+    li:nth-of-type(2)::before
+        animation: line-anim 0.40s linear forwards
+
+    li:nth-of-type(3)::before
+        animation: line-anim 0.60s linear 0.40s forwards
+       
+    li:nth-of-type(4)::before
+        animation: line-anim 1.30s ease-out 1s forwards
+
+    @keyframes line-anim
+        to
+            width: $line-length
+    a 
         text-decoration: none
         color: $text-light
+        transition: all 0.25s ease-in-out
+        opacity: 0
+
+    .nav-item::before, .nav-item::after
+        content: ""
+        position: absolute
+        padding: .25em
+        border: 2px solid $accent
+        border-radius: 50%
+        top: $circle-top
+        transition: all 0.25s ease-in-out
+
+
+    .nav-item::before
+        left: -$circle-space
+    .nav-item::after
+        right: -$circle-space
+
+    .nav-item:hover
+        a 
+            color: $accent
+
+        &::before, &::after
+            background: $accent
+
+    li:nth-of-type(1) .nav-item a
+        animation: nav-item-fade 0.60s ease-out forwards
+
+    li:nth-of-type(2) .nav-item a
+        animation: nav-item-fade 0.60s ease-out 0.40s forwards
+
+    li:nth-of-type(3) .nav-item a
+        animation: nav-item-fade 0.60s ease-out 1s forwards
+       
+    li:nth-of-type(4) .nav-item a
+        animation: nav-item-fade 0.60s ease-out 2s forwards
+
+    @keyframes nav-item-fade
+        to
+            opacity: 1
 
 .nav-toggle
     display: none
     cursor: pointer
+    padding: 8px 2px
+    position: absolute
+    top: 2.5em
+    right: 2em
 
 .hamburger, .hamburger::before, .hamburger::after
     display: block
@@ -71,14 +164,9 @@
     content: ""
     transform: translateY(4px)
 
-
-
 @media(max-width: 900px)
     .nav-toggle
         display: block
-        //position: absolute
-        //top: 0
-        //right: 0
 
     .nav-list
         position: absolute
@@ -107,22 +195,62 @@
 
 /*============== Logo Animation Styling ================*/ 
 #logo path:nth-child(1) 
+    fill-opacity: 0
+    fill: $white
     stroke-dasharray: 700
     stroke-dashoffset: 700
-    animation: N_anim 3s ease forwards
+    animation: N_anim 2.15s ease-in forwards
   
 #logo path:nth-child(2) 
     fill: $accent
     fill-opacity: 0
     stroke-dasharray: 700
     stroke-dashoffset: 700
-    animation: J_anim 3s ease forwards 1s
+    animation: J_anim 1.5s ease forwards 0.65s
 
 @keyframes N_anim 
-    to 
+    0%
+        stroke-dashoffset: 700
+        fill-opacity: 0
+
+    50%
+        fill-opacity: 0
+        stroke-dashoffset: 0
+
+    72%
+        fill-opacity: 0
+
+    86%
+        fill-opacity: 1
+
+    100%
+        fill-opacity: 1
         stroke-dashoffset: 0
 
 @keyframes J_anim 
-    to 
+    0%
+        stroke-dashoffset: 700
+        fill-opacity: 0
+    
+    60% 
+        fill-opacity: 0
+
+    90%
         stroke-dashoffset: 0
+
+    98.5%
         fill-opacity: 1
+
+    100%
+        fill-opacity: 1
+        stroke-dashoffset: 0
+
+@keyframes nav_first_line
+    0%
+       //border-bottom: none
+       // height: 0px
+       width: 0em
+    100%
+       width: $line-length * 2
+       //border-bottom: none
+        

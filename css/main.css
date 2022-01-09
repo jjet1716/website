@@ -9,11 +9,13 @@
 html {
   font-family: "tablet-gothic", sans-serif;
   font-weight: 400;
+  font-size: 18px;
   color: white;
   line-height: 1.5;
   /* 1 */
   -webkit-text-size-adjust: 100%;
   /* 2 */
+  scroll-behavior: smooth;
 }
 
 /* Sections
@@ -358,6 +360,10 @@ template {
   padding: 0 150px;
 }
 
+body.dialog-open {
+  overflow: hidden;
+}
+
 .grid {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -383,7 +389,6 @@ template {
   position: fixed;
   z-index: 10;
   width: 100%;
-  height: 140px;
   background: #331937;
   -webkit-box-shadow: 0 10px 10px -5px rgba(0, 0, 0, 0.3);
           box-shadow: 0 10px 10px -5px rgba(0, 0, 0, 0.3);
@@ -392,8 +397,8 @@ template {
 }
 
 .main-header.invis {
-  -webkit-transform: translateY(-140px);
-          transform: translateY(-140px);
+  -webkit-transform: translateY(-110px);
+          transform: translateY(-110px);
   -webkit-box-shadow: none;
           box-shadow: none;
 }
@@ -406,6 +411,7 @@ template {
 .main-header .container {
   max-width: 100%;
   width: 100%;
+  height: 110px;
   padding-top: 15px;
   padding-bottom: 15px;
   padding-right: 50px;
@@ -421,6 +427,11 @@ template {
           align-items: center;
 }
 
+.logo-container svg {
+  -webkit-transform: scale(0.55);
+          transform: scale(0.55);
+}
+
 /*============== Nav Bar Styling ================*/ 
 .nav-bar {
   display: -webkit-box;
@@ -431,6 +442,20 @@ template {
           align-items: center;
   -ms-flex-pack: distribute;
       justify-content: space-around;
+}
+
+.line-swoop {
+  display: inline-block;
+  height: 5em;
+  width: 3.5em;
+  border-left: 4px solid #ff4747;
+  border-bottom: 4px solid #ff4747;
+  border-bottom-left-radius: 20px;
+  -webkit-transform: translate(1.3em, -2.3em);
+          transform: translate(1.3em, -2.3em);
+  -webkit-animation: nav_first_line 5s linear forwards 1s;
+          animation: nav_first_line 5s linear forwards 1s;
+  display: none;
 }
 
 .nav-list {
@@ -448,15 +473,114 @@ template {
       -ms-flex-pack: justify;
           justify-content: space-between;
 }
+.nav-list li {
+  position: relative;
+  margin: 0 2.5em;
+}
+.nav-list li:nth-of-type(1)::before {
+  content: "";
+  position: absolute;
+  left: -3.75em;
+  top: 0.75rem;
+  height: 100%;
+  width: 2.5em;
+}
+.nav-list li:nth-of-type(2)::before,
+.nav-list li:nth-of-type(3)::before,
+.nav-list li:nth-of-type(4)::before {
+  content: "";
+  width: 0em;
+  height: 3px;
+  position: absolute;
+  left: -3.75em;
+  top: 0.75rem;
+  background: #ff4747;
+}
+.nav-list li:nth-of-type(2)::before {
+  -webkit-animation: line-anim 0.4s linear forwards;
+          animation: line-anim 0.4s linear forwards;
+}
+.nav-list li:nth-of-type(3)::before {
+  -webkit-animation: line-anim 0.6s linear 0.4s forwards;
+          animation: line-anim 0.6s linear 0.4s forwards;
+}
+.nav-list li:nth-of-type(4)::before {
+  -webkit-animation: line-anim 1.3s ease-out 1s forwards;
+          animation: line-anim 1.3s ease-out 1s forwards;
+}
+@-webkit-keyframes line-anim {
+  to {
+    width: 2.5em;
+  }
+}
+@keyframes line-anim {
+  to {
+    width: 2.5em;
+  }
+}
 .nav-list a {
-  padding: 30px;
   text-decoration: none;
   color: white;
+  -webkit-transition: all 0.25s ease-in-out;
+  transition: all 0.25s ease-in-out;
+  opacity: 0;
+}
+.nav-list .nav-item::before, .nav-list .nav-item::after {
+  content: "";
+  position: absolute;
+  padding: 0.25em;
+  border: 2px solid #ff4747;
+  border-radius: 50%;
+  top: 0.45rem;
+  -webkit-transition: all 0.25s ease-in-out;
+  transition: all 0.25s ease-in-out;
+}
+.nav-list .nav-item::before {
+  left: -1.25em;
+}
+.nav-list .nav-item::after {
+  right: -1.25em;
+}
+.nav-list .nav-item:hover a {
+  color: #ff4747;
+}
+.nav-list .nav-item:hover::before, .nav-list .nav-item:hover::after {
+  background: #ff4747;
+}
+.nav-list li:nth-of-type(1) .nav-item a {
+  -webkit-animation: nav-item-fade 0.6s ease-out forwards;
+          animation: nav-item-fade 0.6s ease-out forwards;
+}
+.nav-list li:nth-of-type(2) .nav-item a {
+  -webkit-animation: nav-item-fade 0.6s ease-out 0.4s forwards;
+          animation: nav-item-fade 0.6s ease-out 0.4s forwards;
+}
+.nav-list li:nth-of-type(3) .nav-item a {
+  -webkit-animation: nav-item-fade 0.6s ease-out 1s forwards;
+          animation: nav-item-fade 0.6s ease-out 1s forwards;
+}
+.nav-list li:nth-of-type(4) .nav-item a {
+  -webkit-animation: nav-item-fade 0.6s ease-out 2s forwards;
+          animation: nav-item-fade 0.6s ease-out 2s forwards;
+}
+@-webkit-keyframes nav-item-fade {
+  to {
+    opacity: 1;
+  }
+}
+@keyframes nav-item-fade {
+  to {
+    opacity: 1;
+  }
 }
 
 .nav-toggle {
   display: none;
   cursor: pointer;
+  padding: 8px 2px;
+  position: absolute;
+  top: 2.5em;
+  right: 2em;
 }
 
 .hamburger, .hamburger::before, .hamburger::after {
@@ -525,10 +649,12 @@ template {
 }
 /*============== Logo Animation Styling ================*/ 
 #logo path:nth-child(1) {
+  fill-opacity: 0;
+  fill: white;
   stroke-dasharray: 700;
   stroke-dashoffset: 700;
-  -webkit-animation: N_anim 3s ease forwards;
-          animation: N_anim 3s ease forwards;
+  -webkit-animation: N_anim 2.15s ease-in forwards;
+          animation: N_anim 2.15s ease-in forwards;
 }
 
 #logo path:nth-child(2) {
@@ -536,31 +662,103 @@ template {
   fill-opacity: 0;
   stroke-dasharray: 700;
   stroke-dashoffset: 700;
-  -webkit-animation: J_anim 3s ease forwards 1s;
-          animation: J_anim 3s ease forwards 1s;
+  -webkit-animation: J_anim 1.5s ease forwards 0.65s;
+          animation: J_anim 1.5s ease forwards 0.65s;
 }
 
 @-webkit-keyframes N_anim {
-  to {
+  0% {
+    stroke-dashoffset: 700;
+    fill-opacity: 0;
+  }
+  50% {
+    fill-opacity: 0;
+    stroke-dashoffset: 0;
+  }
+  72% {
+    fill-opacity: 0;
+  }
+  86% {
+    fill-opacity: 1;
+  }
+  100% {
+    fill-opacity: 1;
     stroke-dashoffset: 0;
   }
 }
 
 @keyframes N_anim {
-  to {
+  0% {
+    stroke-dashoffset: 700;
+    fill-opacity: 0;
+  }
+  50% {
+    fill-opacity: 0;
+    stroke-dashoffset: 0;
+  }
+  72% {
+    fill-opacity: 0;
+  }
+  86% {
+    fill-opacity: 1;
+  }
+  100% {
+    fill-opacity: 1;
     stroke-dashoffset: 0;
   }
 }
 @-webkit-keyframes J_anim {
-  to {
+  0% {
+    stroke-dashoffset: 700;
+    fill-opacity: 0;
+  }
+  60% {
+    fill-opacity: 0;
+  }
+  90% {
     stroke-dashoffset: 0;
+  }
+  98.5% {
     fill-opacity: 1;
+  }
+  100% {
+    fill-opacity: 1;
+    stroke-dashoffset: 0;
   }
 }
 @keyframes J_anim {
-  to {
+  0% {
+    stroke-dashoffset: 700;
+    fill-opacity: 0;
+  }
+  60% {
+    fill-opacity: 0;
+  }
+  90% {
     stroke-dashoffset: 0;
+  }
+  98.5% {
     fill-opacity: 1;
+  }
+  100% {
+    fill-opacity: 1;
+    stroke-dashoffset: 0;
+  }
+}
+@-webkit-keyframes nav_first_line {
+  0% {
+    width: 0em;
+  }
+  100% {
+    width: 5em;
+  }
+}
+@keyframes nav_first_line {
+  0% {
+    width: 0em;
+  }
+  100% {
+    width: 5em;
   }
 }
 h1, h2, h3, p {
@@ -569,7 +767,7 @@ h1, h2, h3, p {
 
 h1 {
   font-family: "ff-cocon-pro", sans-serif;
-  font-size: 3rem;
+  font-size: 5rem;
   letter-spacing: -2px;
   line-height: 1.15;
 }
@@ -634,7 +832,6 @@ p {
 }
 
 .intro-name {
-  font-size: 5rem;
   margin-bottom: 20px;
 }
 
@@ -701,6 +898,7 @@ p {
   text-decoration: none;
   border: 1px solid #ff4747;
   border-radius: 6px;
+  white-space: nowrap;
   -webkit-transition: all 0.25s ease-out;
   transition: all 0.25s ease-out;
 }

@@ -10,9 +10,11 @@
 
  html {
     @include font($font-base, $font-regular);
+    font-size: $font-root;
     color: $text-light;
     line-height: 1.5; /* 1 */
     -webkit-text-size-adjust: 100%; /* 2 */
+    scroll-behavior: smooth;
   }
   
   /* Sections
