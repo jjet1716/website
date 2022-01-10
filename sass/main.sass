@@ -1,22 +1,25 @@
 // fonts
 @import url("https://use.typekit.net/brq8lgu.css")
 
-// config/helper files
-@import abstracts/abs_typography
+// config/helper files (varibles & mix-ins)
+@import abstracts/abs--typography
 @import abstracts/colors
 @import abstracts/spacing
 @import abstracts/Responsiveness
 
 // normalize file (for consistent styling across all browsers)
-@import abstracts/normalize
+@import vendors/normalize
 
-// styling
+// base styling (layouts)
 @import styles/base
 @import styles/grid
+@import styles/styles--typography
+
+// section styling 
 @import styles/header
-@import styles/types
 @import styles/intro
 @import styles/buttons
 @import styles/projects
+
 
 
