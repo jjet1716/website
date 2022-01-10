@@ -1,30 +1,12 @@
-.intro
-    max-width: 1370px
-    
 .intro .container
-    min-height: 100vh
-    width: 100%
-    max-width: 1000px
+    min-height: clamp(900px, 100vh, 100vh)
+    max-width: 1650px
 
     display: flex
     flex-wrap: wrap
     flex-direction: column
     align-items: flex-start
     justify-content: center
-    margin: auto auto auto 0
-    padding: 0 200px
-
-    @media(max-width: 1300px)
-        padding: 0 150px
-        max-width: 900px
-
-    @media(max-width: 950px)
-        padding: 0 100px
-        max-width: 800px
-
-    @media(max-width: 789px)
-        padding: 50px
-        max-width: 700px
 
 .intro-hello
     font-weight: $font-light
@@ -34,9 +16,11 @@
 
 .intro-name
     margin-bottom: 20px
+    margin-right: 10px
 
 .intro-body
     margin-bottom: 40px
+    max-width: 570px
 
 .btn-container
     display: flex
@@ -48,7 +32,29 @@
     a:nth-of-type(1)
         margin-right: 12px
 
-    @media(max-width: 420px)
+.social-container
+    flex-grow: 1
+    text-align: end
+
+
+/*============== Responsiveness ================*/   
+@media(max-width: $tablet)
+    .intro .container
+        padding: 0 100px
+
+    .social-container
+        flex-basis: 100%
+        text-align: start
+        padding-top: 20px
+
+@media(max-width: $mobile)
+    .intro .container
+        align-items: center
+
+    .intro-body
+        text-align: center
+
+    .btn-container
         flex-direction: column
         justify-content: center
 
@@ -62,16 +68,6 @@
 
             a:nth-of-type(2)
                 margin-left: 5px
-
-.social-container
-    flex-grow: 1
-    text-align: end
-
-    @media(max-width: 540px)
-        flex-basis: 100%
-        text-align: start
-        padding-top: 20px
-
     
  
     

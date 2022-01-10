@@ -1,11 +1,23 @@
 *, *::before, *::after 
     box-sizing: border-box 
 
-.container
-    width: 100%
-    max-width: 1800px
-    margin: 0 auto 
-    padding: 0 150px
+body 
+    .container 
+        width: 100%
+        max-width: 1650px
+        margin: 0 auto 
+        padding: 0 150px
+
+    /* every section besides intro
+    section:nth-of-type(n+2) .container
+        padding: 200px 100px
+        max-width: 2000px
+
 
 body.dialog-open
     overflow: hidden
+
+/*============== Responsiveness ================*/   
+@media(max-width: $mobile)
+    body section:nth-of-type(n) .container
+        padding: 50px

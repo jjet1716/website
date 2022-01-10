@@ -9,29 +9,30 @@
     box-shadow: 0 10px 10px -5px rgba(0,0,0,0.3)
     transition: all 0.25s ease
 
-.main-header.invis
-    transform: translateY(-$header-height)
-    box-shadow: none
 
-.main-header.top
-    box-shadow: none   
+    & .container
+        max-width: 100%
+        width: 100%
+        height: $header-height
+        padding-top: $header-space-tb
+        padding-bottom: $header-space-tb
+        padding-right: $header-space-lr
+        padding-left: $header-space-lr
+        
+        &.grid
+            justify-content: space-between
+            align-items: center
+            flex-wrap: nowrap
 
-.main-header .container
-    max-width: 100%
-    width: 100%
-    height: $header-height
-    padding-top: $header-space-tb
-    padding-bottom: $header-space-tb
-    padding-right: $header-space-lr
-    padding-left: $header-space-lr
-    
-.main-header .container.grid 
-    justify-content: space-between
-    align-items: center
+    &.invis
+        transform: translateY(-$header-height)
+        box-shadow: none 
+
+    &.top
+        box-shadow: none 
 
 .logo-container svg
     transform: scale(0.55)
-    
     
 /*============== Nav Bar Styling ================*/ 
 .nav-bar
@@ -164,7 +165,7 @@
     content: ""
     transform: translateY(4px)
 
-@media(max-width: 900px)
+@media(max-width: $tablet)
     .nav-toggle
         display: block
 
@@ -207,6 +208,7 @@
     stroke-dasharray: 700
     stroke-dashoffset: 700
     animation: J_anim 1.5s ease forwards 0.65s
+
 
 @keyframes N_anim 
     0%
