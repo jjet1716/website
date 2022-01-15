@@ -1,46 +1,61 @@
-.projects p
-    text-align: center
 
-.projects h3
-    margin-bottom: 20px
+.projects 
+    
+    .grid
+        position: relative
+        margin-bottom: 300px
 
-.projects .grid
-    position: relative
+        .col.col--2
 
-.projects .grid:nth-of-type(1)
-    //flex-direction: column-reverse
+            h3
+                margin-bottom: 0.75em
+                padding-left: 1.25em
+                text-align: start
 
-.projects .grid .col--2:last-of-type
-    position: absolute
-    left: 50%
-    top: 50%
-    transform: translate(-30%, -30%)
-    justify-content: center
+            &:last-of-type
+                position: absolute
+                left: 50%
+                top: 50%
+                transform: translate(-24%, -35%)
+                justify-content: center
 
-.read-more-container
-    display: flex
-    align-items: center
-    justify-content: center
-    margin-top: auto
-    padding: 2rem
+            .proj-text-container
+                display: flex
+                flex-direction: column
+                justify-content: space-between
 
-.proj-text-container
-    height: 500px
-    display: flex
-    flex-direction: column
-    justify-content: space-between
+                background: #58365E
+                padding: 2em 3em 2em 2em
+                border-radius: 13px
 
-    background: #58365E
-    padding: 2em 3em 2em 2em
-    border-radius: 13px
+                p
+                    width: 90%
+                    text-align: center
 
-    p
-        width: 80%
+                .view-code-container
+                    width: 90%
+                    padding-top: 2em
+                    text-align: center
 
-    .view-code-container
-        width: 80%
-        text-align: center
 
+    .grid:nth-of-type(2)
+            justify-content: end  
+
+            .col.col--2
+
+                h3
+                    padding-right: 1.25em
+                    padding-left: 0
+                    text-align: end
+                    
+
+                &:last-of-type
+                    transform: translate(-90%, -35%)
+
+                .proj-text-container
+                    padding: 2em 3em 2em 2em
+                    align-items: end
+    
 
 .proj-image-container
     display: flex
@@ -52,13 +67,16 @@
     background: none
     border-radius: 6px
     width: auto
-    height: 250px
-    box-shadow: 0 0 10px 9px #c2c2c266
+    height: 440px
+    //box-shadow: inset 0 0 10px 9px #c2c2c266, inset 0 0 10px 19px transparent
+
     background: #c2c2c25e
-    filter: blur(2px)
+    padding-top: 13px
+    //filter: blur(2px)
 
 .tech-container
-    background: #aca2adc4
+    //background: #aca2adc4
+    background: #c2c2c25e
     border-radius: 6px
     padding: 1.2em 2em
 
