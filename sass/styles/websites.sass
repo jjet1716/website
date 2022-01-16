@@ -1,8 +1,11 @@
 .websites h3, .websites p
     text-align: center
+    padding: 0em 2em
 
 .websites h3
     margin-bottom: 20px
+    margin-top: 20px
+    
 
 .read-more-container
     display: flex
@@ -15,19 +18,83 @@
     display: flex
     align-items: center
     justify-content: center
-    height: 200px
+    padding: 1em
+    border-top-left-radius: 13px
+    border-top-right-radius: 13px
 
-    //@include background-opacity($accent, 0.5)
+    .website-img
+        background: none
+        border-radius: 6px
+        margin: 0 auto
+        width: 100%
+        filter: saturate(0.1)
+        transition: filter .3s ease-out
 
-.website-img
-    background: none
-    border-radius: 6px
-    margin: 0 auto
-    //filter: grayscale(1)
 
-.websites .col
-    //box-shadow: -5px 0 0 -2px white, 5px 0 0 -2px red
+.websites .col:hover
 
+    .website-img
+            filter: saturate(1)
+
+/*============== Animation ================*/ 
+
+.websites.visiting .grid .col.col--3
+
+    &:nth-of-type(1) 
+        transform: translateY(100%)
+        opacity: 0
+        animation: slide-up 0.75s ease-out forwards
+
+    &:nth-of-type(2) 
+        transform: translateY(100%)
+        opacity: 0
+        animation: slide-up 0.75s ease-out 0.2s forwards
+
+    &:nth-of-type(3) 
+        transform: translateY(100%)
+        opacity: 0
+        animation: slide-up 0.75s ease-out 0.4s forwards
+
+.websites.unvisited .grid .col.col--3
+
+    &:nth-of-type(1) 
+        transform: translateY(0%)
+        opacity: 1
+        animation: slide-down 0.75s ease-out forwards
+
+    &:nth-of-type(2)
+        transform: translateY(0%)
+        opacity: 1 
+        animation: slide-down 0.75s ease-out 0.2s forwards
+
+    &:nth-of-type(3)
+        transform: translateY(0%)
+        opacity: 1 
+        animation: slide-down 0.75s ease-out 0.4s forwards
+
+@keyframes slide-up
+    0%
+
+    50%
+        opacity: 0.05
+
+    100%      
+        transform: translateY(0%)
+        opacity: 1
+
+
+
+@keyframes slide-down
+    0%
+
+    50%
+        opacity: 0.95
+
+    100%      
+        transform: translateY(100%)
+        opacity: 0
+
+/*============== Responsiveness================*/ 
 @media(max-width: $mobile)
     .websites .container
         padding: 50px

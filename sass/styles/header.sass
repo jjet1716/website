@@ -88,13 +88,16 @@
         background: $accent
 
     li:nth-of-type(2)::before
-        animation: line-anim 0.40s linear forwards
+        //animation: line-anim 0.40s linear forwards
+        animation: line-anim 0.25s linear forwards
 
     li:nth-of-type(3)::before
-        animation: line-anim 0.60s linear 0.40s forwards
+        //animation: line-anim 0.60s linear 0.40s forwards
+        animation: line-anim 0.25s linear 0.25s forwards
        
     li:nth-of-type(4)::before
-        animation: line-anim 1.30s ease-out 1s forwards
+        //animation: line-anim 1.30s ease-out 1s forwards
+        animation: line-anim 0.25s linear 0.50s forwards
 
     @keyframes line-anim
         to
@@ -114,7 +117,6 @@
         top: $circle-top
         transition: all 0.25s ease-in-out
 
-
     .nav-item::before
         left: -$circle-space
     .nav-item::after
@@ -128,16 +130,31 @@
             background: $accent
 
     li:nth-of-type(1) .nav-item a
-        animation: nav-item-fade 0.60s ease-out forwards
+        animation: nav-item-fade 0.70s ease-out forwards
 
     li:nth-of-type(2) .nav-item a
-        animation: nav-item-fade 0.60s ease-out 0.40s forwards
+        animation: nav-item-fade 0.70s ease-out 0.25s forwards
 
     li:nth-of-type(3) .nav-item a
-        animation: nav-item-fade 0.60s ease-out 1s forwards
+        animation: nav-item-fade 0.70s ease-out 0.50s forwards
        
     li:nth-of-type(4) .nav-item a
-        animation: nav-item-fade 0.60s ease-out 2s forwards
+        animation: nav-item-fade 0.70s ease-out 0.75s forwards
+
+    li:nth-of-type(n) .nav-item
+        
+        &::after, &::before
+            animation: button-glow 0.90s ease-out 1s
+
+    @keyframes button-glow
+        0%
+            background: transparent
+
+        50%
+            background: $accent 
+
+        100%
+            background: transparent
 
     @keyframes nav-item-fade
         to

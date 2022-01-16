@@ -39,7 +39,7 @@
                     left: 0
                     top: 0
                     padding-left: 0
-                    transform: translate(0%, -4%)
+                    transform: translate(0%, 0%)
 
 
             .proj-text-container
@@ -47,7 +47,7 @@
                 flex-direction: column
                 justify-content: space-between
 
-                background: #58365E
+                background: linear-gradient(180deg,#58365e, transparent)
                 padding: 2em 3em 2em 2em
                 border-radius: 13px
 
@@ -62,9 +62,11 @@
                     width: 90%
                     padding-top: 2em
                     text-align: center
+                    transform: translateY(5em)
 
                     @media(max-width: $mobile-project)
                         width: 100%
+                        transform: none
 
             .proj-image-container
                 display: flex
@@ -80,13 +82,16 @@
 
                     background: #c2c2c25e
                     padding-top: 13px
-                    filter: blur(2px)
-                    transition: filter .5s ease-in
+                    filter: saturate(1)
+                    transform: scale(1)
+                    transition: filter .5s ease-in, transform 2s ease-out
 
-                &.in-focus
+
+                &.not-in-focus
 
                     .project-img
-                        filter: blur(0px)
+                        filter: saturate(0.3)
+                        transform: scale(0.90)
 
                 @media(max-width: $tablet-project)
                     .project-img
@@ -150,7 +155,7 @@
                         left: 0
                         top: 0
                         padding-left: 0
-                        transform: translate(0%, -4%)
+                        transform: translate(0%, 0%)
 
                 .proj-text-container
                     padding: 2em 3em 2em 2em

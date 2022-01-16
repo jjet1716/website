@@ -4,17 +4,17 @@ $(document).ready(function() {
     const options = {
         root: null,
         threshold: 1,
-        rootMargin: "-100px"
+        rootMargin: "-60px 0px 60px 0px"
     };
 
     projectImageArr.forEach(function(projectImage) {
         const observer = new IntersectionObserver(function(entries, observer) {
             entries.forEach(entry => {
                 if (!entry.isIntersecting) {
-                    entry.target.classList.remove("in-focus");
+                    entry.target.classList.add("not-in-focus");
                 } else {
                     console.log(entry.target);
-                    entry.target.classList.add("in-focus");
+                    entry.target.classList.remove("not-in-focus");
                 }    
             });
         }, options);
