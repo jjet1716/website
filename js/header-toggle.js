@@ -1,3 +1,6 @@
+window.onload = function() {
+    document.getElementById("main-header").classList.remove("invis");
+}
 
 var prev_scrollTop = 0;
 window.onscroll = function() {
