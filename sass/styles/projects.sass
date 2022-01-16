@@ -1,9 +1,14 @@
 
-.projects 
+.projects
     
     .grid
         position: relative
         margin-bottom: 300px
+        justify-content: start
+
+        @media(max-width: $mobile-project)
+            justify-content: center
+            margin-bottom: 200px
 
         .col.col--2
 
@@ -12,12 +17,30 @@
                 padding-left: 1.25em
                 text-align: start
 
+                @media(max-width: $mobile-project)
+                    text-align: center
+                    padding-left: 0
+
+            &:first-of-type
+                padding-right: 0
+
+                @media(max-width: $mobile-project)
+                    flex: 0 0 100%
+
             &:last-of-type
                 position: absolute
                 left: 50%
                 top: 50%
-                transform: translate(-24%, -35%)
+                transform: translate(-19%, -35%)
                 justify-content: center
+
+                @media(max-width: $mobile-project)
+                    position: static
+                    left: 0
+                    top: 0
+                    padding-left: 0
+                    transform: translate(0%, -4%)
+
 
             .proj-text-container
                 display: flex
@@ -32,66 +55,111 @@
                     width: 90%
                     text-align: center
 
+                    @media(max-width: $mobile-project)
+                        width: 100%
+
                 .view-code-container
                     width: 90%
                     padding-top: 2em
                     text-align: center
 
+                    @media(max-width: $mobile-project)
+                        width: 100%
 
-    .grid:nth-of-type(2)
+            .proj-image-container
+                display: flex
+                align-items: center
+                justify-content: center
+                padding-bottom: 2em
+
+                .project-img
+                    background: none
+                    border-radius: 6px
+                    width: auto
+                    height: 440px
+
+                    background: #c2c2c25e
+                    padding-top: 13px
+                    filter: blur(2px)
+                    transition: filter .5s ease-in
+
+                &.in-focus
+
+                    .project-img
+                        filter: blur(0px)
+
+                @media(max-width: $tablet-project)
+                    .project-img
+                        height: calc(35vw) 
+
+                @media(max-width: $mobile-project)
+                    .project-img
+                        height: calc(50vw) 
+
+            .tech-container
+                background: #c2c2c25e
+                border-radius: 6px
+                padding: 1.2em 2em
+
+                .tech-list
+                    list-style: none
+                    margin: 0
+                    padding: 0
+
+                    display: flex
+                    flex-direction: row
+                    justify-content: space-between
+
+                    li
+                        padding: 0em 0.5em
+
+                        &:first-of-type
+                            padding-left: 0
+                        
+                        &:last-of-type
+                            padding-right: 0
+
+            @media(max-width: $mobile-project)
+                .tech-container
+                    padding: 1.2em 1em
+
+
+    .grid:nth-of-type(2n)
             justify-content: end  
 
+            @media(max-width: $mobile-project)
+                justify-content: center
+
             .col.col--2
+                padding-right: 0
 
                 h3
                     padding-right: 1.25em
                     padding-left: 0
                     text-align: end
-                    
+
+                    @media(max-width: $mobile-project)
+                        text-align: center
+                        padding-right: 0     
 
                 &:last-of-type
                     transform: translate(-90%, -35%)
 
+                    @media(max-width: $mobile-project)
+                        position: static
+                        left: 0
+                        top: 0
+                        padding-left: 0
+                        transform: translate(0%, -4%)
+
                 .proj-text-container
                     padding: 2em 3em 2em 2em
                     align-items: end
-    
 
-.proj-image-container
-    display: flex
-    align-items: center
-    justify-content: center
-    padding-bottom: 2em
 
-.project-img
-    background: none
-    border-radius: 6px
-    width: auto
-    height: 440px
-    //box-shadow: inset 0 0 10px 9px #c2c2c266, inset 0 0 10px 19px transparent
-
-    background: #c2c2c25e
-    padding-top: 13px
-    //filter: blur(2px)
-
-.tech-container
-    //background: #aca2adc4
-    background: #c2c2c25e
-    border-radius: 6px
-    padding: 1.2em 2em
-
-.tech-list
-    list-style: none
-    margin: 0
-    padding: 0
-
-    display: flex
-    flex-direction: row
-    justify-content: space-between
-
-@media(max-width: $mobile)
-    .projects .container
-        padding: 50px
+@media(max-width: $tablet-grid)
+    body section.projects .container
+        padding: 200px 50px
         
         h2
             text-align: center
