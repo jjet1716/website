@@ -10,11 +10,13 @@ $(document).ready(function() {
     const observer = new IntersectionObserver(function(entries, observer) {
         entries.forEach(entry => {
             if (!entry.isIntersecting) {
-                entry.target.classList.remove("visiting");
+                //entry.target.classList.remove("visiting");
                 entry.target.classList.add("unvisited");
+                return;
             } else {
                 entry.target.classList.remove("unvisited");
                 entry.target.classList.add("visiting");
+                observer.unobserve(websiteSection);
             }    
         });
     }, options);
